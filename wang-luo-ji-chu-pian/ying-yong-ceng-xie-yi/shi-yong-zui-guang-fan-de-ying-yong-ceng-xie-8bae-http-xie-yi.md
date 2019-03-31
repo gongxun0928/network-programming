@@ -4,21 +4,20 @@ HTTP协议应该是互联网领域运用最广泛的一种协议，它的重要�
 
 首先我们用Go首先一个web server
 
-```
+```go
 package main
 
 import (
-	"log"
-	"net/http"
+    "log"
+    "net/http"
 )
 
 func main() {
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("hello wolrd"))
-	})
-	log.Fatal(http.ListenAndServe(":19028", nil))
+    http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+        w.Write([]byte("hello wolrd"))
+    })
+    log.Fatal(http.ListenAndServe(":19028", nil))
 }
-
 ```
 
 
