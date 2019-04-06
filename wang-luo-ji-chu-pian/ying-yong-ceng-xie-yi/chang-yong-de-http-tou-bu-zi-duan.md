@@ -33,7 +33,7 @@ HTTP头部请求包含太广泛，一一介绍并不合适，我们主要从访�
 格式：
 
 ```
-    Accept表明可接受的MIME类型
+    Accept表明可接受的MIME类型，Content-Type返回内容的MIME类型
 ```
 
 分片支持:
