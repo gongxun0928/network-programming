@@ -56,6 +56,8 @@ func main() {
 
 第17行代表响应正文
 
+
+
 HTTP协议的基本结构就是上面那样，主要使用的HTTP方法主要就是GET,PUT,POST,DELETE,OPTIONS等方法。
 
 http请求可以通过Query携带具体的查询参数，不同的查询参数使用&链接，特殊字符在url中一般会通过转义\(%十六进制\)。
