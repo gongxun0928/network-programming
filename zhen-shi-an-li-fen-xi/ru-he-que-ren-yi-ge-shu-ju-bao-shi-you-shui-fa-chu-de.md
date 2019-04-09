@@ -30,5 +30,9 @@ done
 tcpdump -i eth0 dst host 100.69.238.11 and port 8000 -s 0 -w dquality.pcap
 ```
 
-tcpdump的抓包情况大致类似下图:![](/assets/tcpdump_dquality.png)备注：tcpdump并不适合分析数据包，此时可以祭出
+tcpdump的抓包情况大致类似下图:![](/assets/tcpdump_dquality.png)备注：tcpdump并不适合分析数据包，此时可以祭出图形化分析工具WirkShark. 使用方式参见[常用工具篇](/chang-yong-gong-ju-pian.md)
+
+通过wireshark的分析，发现http头部的User-Agent里包含:Apach-HttpClient之类的字段，由此可见，是一个java进程发送的。
+
+jps查看java进程，发现有十几个java进程；这里要简单解释一下这个服务器的历史，由于这台服务器是其他项目组交给我的，但是上面跑了特别多历史项目，且没人知道到底有没有在用，所以这台服务器的环境很复杂，十几个java进程，只有少数知道是做什么的，其他都不清楚，此时有一个办法，就是ps -ef 去查看每个java进程的目录，根据目录去看到底什么项目，然后再去gitlab上一个个项目去索引，谁调用了服务A。
 
