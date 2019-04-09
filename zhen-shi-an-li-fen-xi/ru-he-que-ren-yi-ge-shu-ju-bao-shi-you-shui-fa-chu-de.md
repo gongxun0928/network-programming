@@ -24,5 +24,11 @@ done
 
 如上图所示，lsof -i 去查看连接占用的本地端口，没有任何输出，获取不到本地进程号。
 
-此证明，短连接情况下，查看端口的进程占用情况，netstat 和 lsof 作用不大；这时，我想是否能够通过tcpdump抓包去分析这个http包里的数据，去猜测到底是哪个进程占用端口
+此证明，短连接情况下，查看端口的进程占用情况，netstat 和 lsof 作用不大；这时，我想是否能够通过tcpdump抓包去分析这个http包里的数据，去猜测到底是哪个进程占用端口，于是使用如下命令抓包：
+
+```
+tcpdump -i eth0 dst host 100.69.238.11 and port 8000 -s 0 -w dquality.pcap
+```
+
+tcpdump的抓包情况大致类似下图:![](/assets/tcpdump_dquality.png)备注：tcpdump并不适合分析数据包，此时可以祭出
 
