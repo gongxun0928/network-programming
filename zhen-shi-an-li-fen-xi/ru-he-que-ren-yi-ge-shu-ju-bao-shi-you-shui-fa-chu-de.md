@@ -38,5 +38,5 @@ jps查看java进程，发现有十几个java进程；这里要简单解释一下
 
 聪明的程序员，当然不能使用上面的办法，且为了今天是http请求，可以通过user-agent请求去投机取巧，然后遇到DNS或者ICMP这类请求，我们又该如何去定位呢，至此一个好用的工具[ptrap](https://github.com/mvitale1989/ptrap) 出现了。
 
-先秀一下用ptrap分析的结果：![](/assets/ptrap_shell.png)
+先秀一下用ptrap分析的结果,然后我们再来讲解一下ptrap的原理![](/assets/ptrap_shell.png)
 
