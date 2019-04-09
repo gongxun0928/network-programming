@@ -42,3 +42,5 @@ jps查看java进程，发现有十几个java进程；这里要简单解释一下
 
 ptrap是利用内核的_traffic controller的延迟技术\(即tc module的\_netem_\),我们查询不到端口的占用进程，就是因为整个请求很短暂，在netstat,lsof 还没有来得及查询时，连接已经断开，所以ptrap使用netem的延迟技术，可以保证连接的时间窗口足够我们去查询某个端口占用情况。
 
+备注：内核的 tc module是一个很有用的模块，有兴趣的同学可以研究一下
+
