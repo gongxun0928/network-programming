@@ -40,3 +40,5 @@ jps查看java进程，发现有十几个java进程；这里要简单解释一下
 
 先秀一下用ptrap分析的结果,然后我们再来讲解一下ptrap的原理![](/assets/ptrap_shell.png)
 
+ptrap是利用内核的_traffic controller的延迟技术\(即tc module的_netem_\),_
+
