@@ -2,8 +2,6 @@
 
 为什么我们需要http web框架，框架做的事情就是把web开发中经常用到的功能，以插件功能化的形式提供给web开发者，本质是要求简单易用，功能丰富。
 
-
-
 最最基本的http webserver实现的伪代码：
 
 ```c
@@ -26,7 +24,12 @@ void buildRequest(clientSocket){
 
 //处理clientSocket
 void handle(clientSocket){
-
+    request=buildRequest(clientSocket)
+    
+    //根据request的字段，处理逻辑，回复response
+    doRequest(request,response)
+    
+    clientSocket.send(response)
 }
 
 
@@ -39,5 +42,5 @@ void main(){
 }
 ```
 
-s
+
 
