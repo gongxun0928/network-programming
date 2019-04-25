@@ -6,8 +6,17 @@
   * [应用层](wang-luo-ji-chu-pian/ying-yong-ceng-xie-yi.md)
     * [使用最广泛的应用层协议-HTTP协议](wang-luo-ji-chu-pian/ying-yong-ceng-xie-yi/shi-yong-zui-guang-fan-de-ying-yong-ceng-xie-8bae-http-xie-yi.md)
     * [常用的HTTP头部字段](wang-luo-ji-chu-pian/ying-yong-ceng-xie-yi/chang-yong-de-http-tou-bu-zi-duan.md)
-    * [HTTP应用](wang-luo-ji-chu-pian/ying-yong-ceng-xie-yi/httpying-yong.md)
-    * [HTTP实际案例](wang-luo-ji-chu-pian/ying-yong-ceng-xie-yi/httpshi-ji-an-li.md)
+    * [如何实现一个基于HTTP和RPC协议的微服务框架](wang-luo-ji-chu-pian/ying-yong-ceng-xie-yi/httpshi-ji-an-li.md)
+      * [实现一个支持router和middleware的http server](wang-luo-ji-chu-pian/ying-yong-ceng-xie-yi/httpshi-ji-an-li/shi-xian-yi-gehttp-server.md)
+      * 如何实现服务注册与发现
+      * [如何实现http的熔断与恢复\(断路器的实现\)](wang-luo-ji-chu-pian/ying-yong-ceng-xie-yi/httpshi-ji-an-li/ru-he-shi-xian-http-de-rong-duan-yu-hui-590d28-duan-lu-qi-de-shi-73b029.md)
+      * [如何实现应用层路由](wang-luo-ji-chu-pian/ying-yong-ceng-xie-yi/httpshi-ji-an-li/ru-he-shi-xian-ying-yong-ceng-lu-you.md)
+      * 如何实现速率控制Rate Limiter
+      * 给框架添加request tracing 功能\(了解open tracing技术\)
+      * 如何支持API状态监控，99百分位分析
+      * [开源项目Istio的实现](wang-luo-ji-chu-pian/ying-yong-ceng-xie-yi/httpshi-ji-an-li/kai-yuan-xiang-mu-istio-de-shi-xian.md)
+      * 如何graceful的重启web应用
+      * 系统和网络监控
   * [传输层](wang-luo-ji-chu-pian/chuan-shu-ceng.md)
   * 网络层
   * 数据链路层
