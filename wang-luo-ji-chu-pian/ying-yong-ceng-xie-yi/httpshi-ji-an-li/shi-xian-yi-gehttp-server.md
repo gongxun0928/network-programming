@@ -1,10 +1,10 @@
 ### **如何实现一个简单的http web框架库**
 
-    为什么我们需要http web框架，框架做的事情就是把web开发中经常用到的功能，以插件功能化的形式提供给web开发者，本质是要求简单易用，功能丰富。
+为什么我们需要http web框架，框架做的事情就是把web开发中经常用到的功能，以插件功能化的形式提供给web开发者，本质是要求简单易用，功能丰富。
 
 
 
-    最最基本的http webserver实现的伪代码：
+最最基本的http webserver实现的伪代码：
 
 ```c
 void buildRequest(clientSocket){
@@ -39,5 +39,5 @@ void main(){
 }
 ```
 
-
+s
 
