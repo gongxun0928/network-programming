@@ -14,7 +14,7 @@ void buildRequest(clientSocket){
         parseHTTPHeader(Text);//解析http 头部
     }
 
-    //看while条件就知道，http请求头和请求体直接的间隔，是通过插入一行'\r\n'空行实现的
+    //看while条件就知道，http请求头和请求体的间隔，是通过插入一行'\r\n'空行实现的
     httpBody=clientSocket.readall()
     if(contentLength==len(httpboday) or chunkLength==0)){
         http.parseOver()
@@ -25,10 +25,10 @@ void buildRequest(clientSocket){
 //处理clientSocket
 void handle(clientSocket){
     request=buildRequest(clientSocket)
-    
+
     //根据request的字段，处理逻辑，回复response
     doRequest(request,response)
-    
+
     clientSocket.send(response)
 }
 
@@ -41,6 +41,8 @@ void main(){
     }
 }
 ```
+
+
 
 
 
