@@ -16,6 +16,8 @@ void buildRequest(clientSocket){
 
     //看while条件就知道，http请求头和请求体的间隔，是通过插入一行'\r\n'空行实现的
     httpBody=clientSocket.readall()
+    
+    //如何判断http请求结束了，要不就是 contentLength等于读取的长度，要么就是Transfer-Encoding=chunk
     if(contentLength==len(httpboday) or chunkLength==0)){
         http.parseOver()
     }
@@ -41,8 +43,6 @@ void main(){
     }
 }
 ```
-
-
 
 
 
