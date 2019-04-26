@@ -24,14 +24,14 @@ void buildRequest(clientSocket){
     return request
 }
 
-//处理clientSocket
+//循环处理clientSocket
 void handle(clientSocket){
     while(true){    
         request=buildRequest(clientSocket)
-    
+
         //根据request的字段，处理逻辑，回复response
         doRequest(request,response)
-    
+
         clientSocket.send(response)
     }
 }
@@ -50,7 +50,7 @@ void main(){
 
 ```
 type Handler interface {
-	ServeHTTP(ResponseWriter, *Request)
+    ServeHTTP(ResponseWriter, *Request)
 }
 ```
 
