@@ -46,11 +46,28 @@ void main(){
 }
 ```
 
-在第一节中，我们用不到十行的go代码实现了一个http server，任何请求都返回hello,world。go语言的net/http实现了http webserver的功能，参考上面最简单的webserver代码，go实现了底层tcp协议的所有细节和http协议的解析，request和response的parse和build，并且调用了一个通用接口http.Handler。
+在第一节中，我们用不到十行的go代码实现了一个http server，任何请求都返回hello,world。go语言的net/http实现了http webserver的功能，流程上参考上面最简单的webserver代码，go实现了底层tcp协议的所有细节和http协议的解析，request和response的parse和build，并且最终调用了一个通用接口http.Handler来处理用户逻辑。
 
 ```
 type Handler interface {
     ServeHTTP(ResponseWriter, *Request)
+}
+```
+
+所以我们接下来关于web框架的所有代码，都是基于http.Handler的接口展开的。要在用户开始写代码前，能够执行一些我们希望执行的代码，比如在http 头部插入某些字段，又或者再处理用户数据前，统一鉴权；那么这些功能我们应该怎么去实现呢？
+
+
+
+### 重载http.Handler
+
+基于Go语言的Duck Type实现相同接口的类型，替换掉http.ListenAndServe\(addr,nil\)时，使用的defaultServerMux对象，使用我们自己的Handler类型。首先我们定义一个数据结构，并且实现http.Handler接口
+
+```
+type Mux struct{
+}
+
+func(mux *Mux) ServeHTTP(ResponseWriter, *Request){
+    //do our logic
 }
 ```
 
