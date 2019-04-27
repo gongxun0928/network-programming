@@ -76,11 +76,11 @@ func(mux *Mux) ServeHTTP(w ResponseWriter, r *Request){
     if(r.Method=='GET' && r.URL.PATH=='/hello'){
         //do some GET Logic
     }
-    
+
     if(r.Method=='POST' && r.URL.PATH='/world'){
         //do some POST logic
     }
-    
+
     if(other case){
         //do some define logic
     }
@@ -106,6 +106,7 @@ func (mux *Mux) ServeHTTP(w ResponseWriter, r *Request){
 func (mux *Mux) Handle(path,method string,fn http.HandlerFunc){
     //routerMutex.Lock()
     //defer routerMutex.Unlock()
+    
     if handleMap,ok:=router[method];ok{
         handleMap[path]=fn
     }else{
@@ -114,7 +115,6 @@ func (mux *Mux) Handle(path,method string,fn http.HandlerFunc){
         router[method]=handleMap
     }
 }
-
 ```
 
 
