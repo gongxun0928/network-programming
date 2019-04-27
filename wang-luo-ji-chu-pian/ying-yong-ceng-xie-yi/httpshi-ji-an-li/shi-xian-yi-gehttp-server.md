@@ -56,8 +56,6 @@ type Handler interface {
 
 所以我们接下来关于web框架的所有代码，都是基于http.Handler的接口展开的。要在用户开始写代码前，能够执行一些我们希望执行的代码，比如在http 头部插入某些字段，又或者再处理用户数据前，统一鉴权；那么这些功能我们应该怎么去实现呢？
 
-
-
 ### 重载http.Handler
 
 基于Go语言的Duck Type实现相同接口的类型，替换掉http.ListenAndServe\(addr,nil\)时，使用的defaultServerMux对象，使用我们自己的Handler类型。首先我们定义一个数据结构，并且实现http.Handler接口
@@ -69,6 +67,54 @@ type Mux struct{
 func(mux *Mux) ServeHTTP(ResponseWriter, *Request){
     //do our logic
 }
+```
+
+如果我们想实现不同的HTTP方法，不同的PATH路径给与不同的属性，而不是统一返回hello world应该如何实现呢,伪代码应该如下
+
+```
+func(mux *Mux) ServeHTTP(w ResponseWriter, r *Request){
+    if(r.Method=='GET' && r.URL.PATH=='/hello'){
+        //do some GET Logic
+    }
+    
+    if(r.Method=='POST' && r.URL.PATH='/world'){
+        //do some POST logic
+    }
+    
+    if(other case){
+        //do some define logic
+    }
+}
+```
+
+当然我们会想到把这个功能做的更灵活，最简单的呢，就是基于map实现一个选择 router
+
+```
+type Mux struct(
+    routerMutex *Sync.Mutex
+    router map[string]map[string] http.HandlerFunc
+}
+
+func (mux *Mux) ServeHTTP(w ResponseWriter, r *Request){
+    if handleMap ok:=mux.router[r.Method];ok{
+        if handle,hasHandle=handleMap[r.URL.Path];hasHandle;{
+            handle(w,r)
+        }
+    }
+}
+
+func (mux *Mux) Handle(path,method string,fn http.HandlerFunc){
+    //routerMutex.Lock()
+    //defer routerMutex.Unlock()
+    if handleMap,ok:=router[method];ok{
+        handleMap[path]=fn
+    }else{
+        handlerMap:=make(map[string] http.HandlerFunc)
+        handlerMap[path]= fn
+        router[method]=handleMap
+    }
+}
+
 ```
 
 
