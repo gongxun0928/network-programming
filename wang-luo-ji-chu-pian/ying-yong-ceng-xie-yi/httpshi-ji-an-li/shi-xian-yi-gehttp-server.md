@@ -147,6 +147,9 @@ func (mux *Mux) Handle(path,method string,fn http.HandlerFunc){
         router[method]=handleMap
     }
 }
+
+func (mux *Mux) Use(middleware http.Handler){
+}
 ```
 
 
