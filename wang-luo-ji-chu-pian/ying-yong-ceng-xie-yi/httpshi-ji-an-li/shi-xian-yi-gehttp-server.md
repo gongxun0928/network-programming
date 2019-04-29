@@ -159,5 +159,11 @@ func (mux *Mux) Use(middleware http.Handler){
 }
 ```
 
+目前看到的还是很基本的功能，但是不支持分组路由，不支持分组middleware等功能，接下来我们实现一个真正的可用的http框架，当然数据结构也会更加复杂。
+
+### 一个真实可用的http web框架
+
+1. 基于httprouter或者copy httprouter的trie实现
+2. 
 
 
