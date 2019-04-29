@@ -121,6 +121,8 @@ func (mux *Mux) Handle(path,method string,fn http.HandlerFunc){
 
 ### 实现MiddleWare
 
+使用Use添加middleware，在处理http请求处理前，执行middleware
+
 ```
 type Mux struct(
     middlewares[]http.Handler
@@ -128,6 +130,10 @@ type Mux struct(
 }
 
 func (mux *Mux) ServeHTTP(w ResponseWriter, r *Request){
+    for  middleware:= mux.middlewares {
+        middleware.ServeHTTP(w,r)
+    }
+
     if handleMap ok:=mux.router[r.Method];ok{
         if handle,hasHandle=handleMap[r.URL.Path];hasHandle;{
             handle(w,r)
@@ -149,6 +155,7 @@ func (mux *Mux) Handle(path,method string,fn http.HandlerFunc){
 }
 
 func (mux *Mux) Use(middleware http.Handler){
+    mux.middlewares = append(mux.middlewares,middleware)
 }
 ```
 
