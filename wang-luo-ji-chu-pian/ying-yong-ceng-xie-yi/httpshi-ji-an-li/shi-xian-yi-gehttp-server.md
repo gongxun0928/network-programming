@@ -119,3 +119,35 @@ func (mux *Mux) Handle(path,method string,fn http.HandlerFunc){
 
 但是这里只能支持全path匹配，不够方便灵活
 
+### 实现MiddleWare
+
+```
+type Mux struct(
+    middlewares[]http.Handler
+    router map[string]map[string] http.HandlerFunc
+}
+
+func (mux *Mux) ServeHTTP(w ResponseWriter, r *Request){
+    if handleMap ok:=mux.router[r.Method];ok{
+        if handle,hasHandle=handleMap[r.URL.Path];hasHandle;{
+            handle(w,r)
+        }
+    }
+}
+
+func (mux *Mux) Handle(path,method string,fn http.HandlerFunc){
+    //routerMutex.Lock()
+    //defer routerMutex.Unlock()
+
+    if handleMap,ok:=router[method];ok{
+        handleMap[path]=fn
+    }else{
+        handlerMap:=make(map[string] http.HandlerFunc)
+        handlerMap[path]= fn
+        router[method]=handleMap
+    }
+}
+```
+
+
+
