@@ -121,7 +121,7 @@ func (mux *Mux) Handle(path,method string,fn http.HandlerFunc){
 
 ### 实现MiddleWare
 
-使用Use添加middleware，在处理http请求处理前，执行middleware
+使用Use添加middleware，在处理http请求处理前，执行公共的middleware
 
 ```
 type Mux struct(
