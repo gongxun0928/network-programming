@@ -163,7 +163,11 @@ func (mux *Mux) Use(middleware http.Handler){
 
 ### 一个真实可用的http web框架
 
-1. 基于httprouter或者copy httprouter的trie实现
-2. 
+1. 基于httprouter或者copy httprouter的trie实现\(性能保证,站在前人身上造轮子
+2. 支持分组路由，支持链式Middleware
+3. 实现部分常用middleware
+
+
+
 
 
