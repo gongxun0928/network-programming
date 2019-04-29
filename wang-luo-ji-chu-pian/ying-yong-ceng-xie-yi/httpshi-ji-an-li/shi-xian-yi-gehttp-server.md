@@ -69,7 +69,7 @@ func(mux *Mux) ServeHTTP(ResponseWriter, *Request){
 }
 ```
 
-如果我们想实现不同的HTTP方法，不同的PATH路径给与不同的属性，而不是统一返回hello world应该如何实现呢,伪代码应该如下
+如果我们想实现不同的HTTP方法，不同的PATH路径给与不同的属性，而不是统一返回hello world，应该如何实现呢,伪代码应该如下
 
 ```
 func(mux *Mux) ServeHTTP(w ResponseWriter, r *Request){
@@ -106,7 +106,7 @@ func (mux *Mux) ServeHTTP(w ResponseWriter, r *Request){
 func (mux *Mux) Handle(path,method string,fn http.HandlerFunc){
     //routerMutex.Lock()
     //defer routerMutex.Unlock()
-    
+
     if handleMap,ok:=router[method];ok{
         handleMap[path]=fn
     }else{
@@ -117,5 +117,5 @@ func (mux *Mux) Handle(path,method string,fn http.HandlerFunc){
 }
 ```
 
-
+但是这里只能支持全path匹配，不够方便灵活
 
