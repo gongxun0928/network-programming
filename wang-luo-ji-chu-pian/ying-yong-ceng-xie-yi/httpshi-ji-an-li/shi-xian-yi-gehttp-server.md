@@ -168,7 +168,9 @@ func (mux *Mux) Use(middleware http.Handler){
 1. 基于httprouter或者copy httprouter的trie实现 \(有性能保证,站在前人身上造轮子）
 2. 完全兼容net/http
 3. 支持分组路由，支持链式Middleware
-4. 实现部分常用middleware
+4. 实现部分常用middlewar
+
+[chi](https://github.com/go-chi/chi)
 
 
 
