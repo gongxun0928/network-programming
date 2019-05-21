@@ -8,7 +8,7 @@
     * [常用的HTTP头部字段](wang-luo-ji-chu-pian/ying-yong-ceng-xie-yi/chang-yong-de-http-tou-bu-zi-duan.md)
     * [如何实现一个基于HTTP和RPC协议的微服务框架](wang-luo-ji-chu-pian/ying-yong-ceng-xie-yi/httpshi-ji-an-li.md)
       * [实现一个支持router和middleware的http server](wang-luo-ji-chu-pian/ying-yong-ceng-xie-yi/httpshi-ji-an-li/shi-xian-yi-gehttp-server.md)
-      * 如何实现服务注册与发现
+      * [如何实现服务注册与发现](wang-luo-ji-chu-pian/ying-yong-ceng-xie-yi/httpshi-ji-an-li/ru-he-shi-xian-fu-wu-zhu-ce-yu-fa-xian.md)
       * [如何实现http的熔断与恢复\(断路器的实现\)](wang-luo-ji-chu-pian/ying-yong-ceng-xie-yi/httpshi-ji-an-li/ru-he-shi-xian-http-de-rong-duan-yu-hui-590d28-duan-lu-qi-de-shi-73b029.md)
       * [如何实现应用层路由](wang-luo-ji-chu-pian/ying-yong-ceng-xie-yi/httpshi-ji-an-li/ru-he-shi-xian-ying-yong-ceng-lu-you.md)
       * 如何实现速率控制Rate Limiter
@@ -39,4 +39,5 @@
   * 网络分析利器wireshark
 * [真实案例分析](zhen-shi-an-li-fen-xi.md)
   * [如何确认一个数据包是由谁发出的](zhen-shi-an-li-fen-xi/ru-he-que-ren-yi-ge-shu-ju-bao-shi-you-shui-fa-chu-de.md)
+  * [为什么http请求老是抛出异常](zhen-shi-an-li-fen-xi/wei-shi-yao-http-qing-qiu-lao-shi-pao-chu-connection-reset-by-peer-yi-chang.md)
 
