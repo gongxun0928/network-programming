@@ -64,7 +64,25 @@ net.ipv4.tcp_syncookies = 1
 
 **快速定位法：**
 
-> 使用更常用的工具定位，netstat和ss命令定位问题。
+> **使用更常用的工具定位，netstat和ss命令定位问题。**
 
+```
+[root@localhost]$ netstat -s |egrep "listen|LISTEN"
+    19800 times the listen queue of a socket overflowed
+    19800 SYNs to LISTEN sockets dropped
+```
 
+19800 表示全连接队列溢出的次数，隔几秒钟执行下，如果这个数字一直在增加的话, 肯定全连接队列偶尔满了。
+
+ss命令
+
+```
+[root@localhost]$ ss -lnt
+Recv-Q Send-Q Local Address:Port Peer Address:Port
+   101    100              :8080            *:*
+```
+
+上面看到的第二列Send-Q 值是100，表示第三列的listen端口上的全连接队列最大为100，第一列Recv-Q为全连接队列当前使用了多少,联系上面全连接队列大小公式，我们查到java进程 tomcat6的默认backlog是100。远远小于somaxconn=65535的值。
+
+Recv-Q全连接队列使用了101个，肯定是满了，所以我们通过这个就可以看到，8080端口的连接，全连接队列爆了。
 
