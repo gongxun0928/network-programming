@@ -82,9 +82,11 @@ Recv-Q Send-Q Local Address:Port Peer Address:Port
    101    100              :8080            *:*
 ```
 
-上面看到的第二列Send-Q 值是100，表示第三列的listen端口上的全连接队列最大为100，第一列Recv-Q为全连接队列当前使用了多少,联系上面全连接队列大小公式，我们查到java进程 tomcat6的默认backlog是100。远远小于somaxconn=65535的值。
+我们查到java进程 tomcat6的默认backlog是100, 远远小于somaxconn=65535的值,  联系上面全连接队列大小的计算公式，第一列Recv-Q为全连接队列当前使用了多少, Recv-Q全连接队列使用了101个，肯定是满了，所以我们通过这个就可以分析出，8080端口的连接，全连接队列爆了。（**这里有个隐含的知识点，为什么Recv-Q就是代表全连接队列等待数据量呢**）
 
-Recv-Q全连接队列使用了101个，肯定是满了，所以我们通过这个就可以看到，8080端口的连接，全连接队列爆了。
+> **Recv-Q和SEND-Q的数值代表，当前队列排队等待接受和发送的数据量。参考 \[**[**https://www.cyberciti.biz/files/ss.html**](https://www.cyberciti.biz/files/ss.html)**\]**
+
+提出一个问题，上面看到的第二列Send-Q 值是100，代表的是什么含义呢？
 
 **总结**
 
