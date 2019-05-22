@@ -39,7 +39,7 @@
 
 case 1：如果半连接队列满了，在阶段2就会出问题，导致正常请求的SYN包就没有办法正常处理，不是我们遇到的情况
 
-case2： 如果连接队列满了，服务端会按照网络参数net.ipv4.tcp\_abort\_on\_overflow的值进行处理，如果tcp\_abort\_on\_overflow=0，则丢弃掉client的ack包，不作处理，服务端过一段时间后会重新发送syn+ack的包，按照重传机制，执行net.ipv4.tcp\_synack\_retries次重传，每次重传间隔时间double，最终失败后，执行reset；当然这里如果client超时时间较短的话，就会抛出连接超时connection timeout之类的异常。
+case2： 如果连接队列满了，服务端会按照网络参数net.ipv4.tcp\_abort\_on\_overflow的值进行处理，如果tcp\_abort\_on\_overflow=0，则丢弃掉client的ack包，不作处理，服务端过一段时间后会重新发送syn+ack的包，按照重传机制，执行net.ipv4.tcp\_synack\_retries次重传，每次重传间隔时间double，最终失败后，执行reset；当然这里如果client超时时间较短的话，就会抛出连接超时connection timeout之类的异常。如果tcp\_abort\_on\_overflow=1的话，连接会被立即终止，即直接reset.
 
 OK，通过上面的分析，对照着我们的抓包，发现情况，就是case2的情况，去服务器上执行sysctl -a查看系统的tcp参数。
 
@@ -88,7 +88,10 @@ Recv-Q全连接队列使用了101个，肯定是满了，所以我们通过这�
 
 **总结**
 
-> **全连接队列、半连接队列溢出这种问题很容易被忽视，但是又很关键，特别是对于一些短连接应用更容易爆发。**
+> **全连接队列、半连接队列溢出这种问题很容易被忽视，但是又很关键，特别是对于一些短连接应用更容易爆发。出现这种情况时，应用的表象有集中在两种：**
+>
+> 1. 就是我们今天遇到的，连接失败，connection reset by peer
+> 2. 另外还有一种就是client端看到的，请求的RT时间很长，服务端又发现业务代码时间并不长
 
 
 
