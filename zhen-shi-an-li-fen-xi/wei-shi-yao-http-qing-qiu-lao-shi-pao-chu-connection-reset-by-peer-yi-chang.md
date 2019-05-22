@@ -71,7 +71,7 @@ netstat命令：
 ```
 [root@localhost]$ netstat -s |egrep "listen|LISTEN"
     19800 times the listen queue of a socket overflowed
-    19800 SYNs to LISTEN sockets dropped    
+    19800 SYNs to LISTEN sockets dropped
 ```
 
 19800 表示全连接队列溢出的次数，隔几秒钟执行下，如果这个数字一直在增加的话, 肯定全连接队列偶尔满了。
@@ -88,7 +88,12 @@ Recv-Q Send-Q Local Address:Port Peer Address:Port
 
 > **Recv-Q和SEND-Q的数值代表，当前队列排队等待接受和发送的数据量。参考 \[**[**https://www.cyberciti.biz/files/ss.html**](https://www.cyberciti.biz/files/ss.html)**\]**
 
-提出一个问题，上面看到的第二列Send-Q 值是100，代表的是什么含义呢？
+这里提出两个问题：
+
+1. 上面看到的第二列Send-Q 值是100，代表的是什么含义呢？
+2. 我们经常在netstat 命令中看到Send-Q和Recv-Q，他们的含义又是什么呢，跟ss命令里的区别是什么？
+
+
 
 **总结**
 
