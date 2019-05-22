@@ -60,25 +60,23 @@ net.ipv4.tcp_syncookies = 1
 >
 > **我们写代码的时候，应该有很多人从来没有想过这个backlog，很容易直接忽视了它**
 
-
-
 上面是我最喜欢的抓包分析法，对于tcpdump和wireshark不熟悉的同事，也有其他简单的方法来定位这个问题，但是没有抓包分析法这么准确。
-
-
 
 **快速定位法：**
 
 > **使用更常用的工具定位，netstat和ss命令定位问题。**
 
+netstat命令：
+
 ```
 [root@localhost]$ netstat -s |egrep "listen|LISTEN"
     19800 times the listen queue of a socket overflowed
-    19800 SYNs to LISTEN sockets dropped
+    19800 SYNs to LISTEN sockets dropped    
 ```
 
 19800 表示全连接队列溢出的次数，隔几秒钟执行下，如果这个数字一直在增加的话, 肯定全连接队列偶尔满了。
 
-ss命令
+ss命令：
 
 ```
 [root@localhost]$ ss -lnt
