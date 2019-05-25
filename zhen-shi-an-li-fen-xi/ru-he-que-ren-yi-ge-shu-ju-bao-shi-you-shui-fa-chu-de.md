@@ -30,7 +30,9 @@ done
 tcpdump -i eth0 dst host 100.69.238.11 and port 8000 -s 0 -w dquality.pcap
 ```
 
-tcpdump的抓包情况大致类似下图:![](/assets/tcpdump_dquality.png)备注：tcpdump并不适合分析数据包，此时可以祭出图形化分析工具WirkShark. 使用方式参见[常用工具篇](/chang-yong-gong-ju-pian.md)
+tcpdump的抓包情况大致类似下图:![](/assets/tcpdump_dquality2.png)
+
+备注：tcpdump并不适合分析数据包，此时可以祭出图形化分析工具WirkShark. 使用方式参见[常用工具篇](/chang-yong-gong-ju-pian.md)
 
 通过wireshark的分析，发现http头部的User-Agent里包含:Apach-HttpClient之类的字段，由此可见，是一个java进程发送的。
 
